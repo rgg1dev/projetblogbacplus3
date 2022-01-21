@@ -9,7 +9,7 @@
     <div class="container-fluid py-2">
       <h5 class="display-7 fw-bold">{{$article->title}}</h5>
       <h6 class="display-7 fw-bold">{{$article->subtitle}}</h6>
-<a  class="btn btn-primary" href="{{route('article',$article->slug)}}  ">lire  la suite <i class="fas fa-arrow-right"></i></a>
+<a  class="btn btn-primary" href="{{route('article',$article->slug)}}  ">lire la suite <i class="fas fa-arrow-right"></i></a>
     </div>
   </div>
 

@@ -3,14 +3,25 @@
 @section('content')
 <div class="container">
     <h1 class="text-center my-3"> cree un article </h1>
-    <form methode="POST" action="#">
+    <form method="POST" action=" {{route('articles.store')}} ">
        @csrf
        <div class="col-12">
             <div class="form-group">
             <label class="mx-2 " for="">Titre</label>
-            <input type="text" name="title" class="form-control" placeholder="Titre de l'article "/>
+            <input type="text" name="title" class="form-control @error('title')is-invalid @enderror" placeholder="Titre de l'article "/>
+
+ <!-- mesage d error champ no remplis-->
+
+ @error('title')
+<span class="invalidate-feedback" role="alert" >
+<strong>
+    {{$message}}
+</strong>
 
 
+
+</span>
+@enderror
        </div>
     </div>
 
@@ -18,19 +29,48 @@
     <div class="col-12">
         <div class="form-group">
         <label class="mx-2 " for="">sous-titre</label>
-        <input type="text" name="subtitle" class="form-control" placeholder="Sous-titre de l'article "/>
+        <input type="text" name="subtitle" class="form-control  @error('subtitle')
+        is-invalid
+
+        @enderror" placeholder="Sous-titre de l'article "/>
             <small class="form-text text-muted">le théme traité</small>
+ <!-- mesage d error champ no remplis-->
+
+
    </div>
 
+@error('subtitle')
+           <span class="invalidate-feedback" role="alert" >
+           <strong>
+               {{$message}}
+           </strong>
+          </span>
 
-   <div class="col-12">
-    <div class="form-group">
-    <label class="mx-2 " for="">contenu</label>
-   <textarea class="form-control w-100" name="content" id="" cols="30" rows="10"></textarea>
 
-   <div class="d-flex jusfy-content-center mb-5">
+           @enderror
+                <div class="col-12">
+                            <div class="form-group">
+                                    <label class="mx-2 " for="">Corp de l'article</label>
+                                    <textarea id="tinycme-edidor" class="form-control w-100 @error('title')is-invalid @enderror" name="content"></textarea>
+<!-- mesage d error champ no remplis-->
 
-<button type="submit" class="btn btn-primary ">poster l'article</button>
+                                    @error('content')
+
+                        <span class="invalidate-feedback" role="alert" >
+                        <strong>
+                            {{$message}}
+                        </strong>
+                        </span>
+                        @enderror
+                            </div>
+         <script>
+        tinymce.init({
+        selector: '#tinycme-edidor'
+                        });
+        </script>
+
+   <div class="d-flex justify-content-center  my-2">
+    <button type="submit" class="btn btn-primary  ">poster l'article</button>
    </div>
 
 

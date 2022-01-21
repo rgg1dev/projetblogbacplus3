@@ -7,11 +7,11 @@
       <h5 class="text-center my-3 pt-3"> {{$article->subtitle}} </h5>
 
       <div class="container">
-        <p class="text-center">{{$article->content}} </p>
+        <p class="text-center">{!!$article->content!!} </p>
      </div>
 
         <div class="d-flex justify-content-center ">
-         <a  class="btn btn-primary" href="{{route('articles' )}}  "><i class="fas fa-arrow-left"> Retour</i></a>
+         <a  class="btn btn-primary" href="{{route('articles' )}}  "><i class="fas fa-arrow-left">Retour</i></a>
           </div>
 
 

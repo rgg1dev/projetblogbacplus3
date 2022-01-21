@@ -19,11 +19,11 @@ class MainController extends Controller
         'articles'=>$articles ] );
 }
 
-public function show($slug){
-    $article = Article::where('slug',$slug)->firstOrFail();
-
+public function show(Article $article){
 
     return view('article',['article'=>$article]);
 }
+
+
 
 }
