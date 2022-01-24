@@ -25,7 +25,7 @@
             <td>{{$article ->title}}</td>
             <td>{{$article ->dateFormatted()}}</td>
             <td class="d-flex">
-            <a href="" class="btn btn-info mx-3"> Editer</a>
+            <a href=" {{route ('articles.edit', $article->id)}} " class="btn btn-info mx-3"> Editer</a>
             <button type="botton" class="btn btn-danger " onclick="document.getElementById ('modal-open-{{$article->id}} ').style.display='block' ">Suprimer</button>
   <form action= {{ route('articles.delete', $article->id)}} method="POST">
     @csrf
