@@ -8,9 +8,16 @@
 <div class=" mb-2 card text-white bg-secondary mb-3 rounded-3">
     <div class="container-fluid py-2">
       <h5 class="display-7 fw-bold">{{$article->title}}</h5>
+
       <h6 class="display-7 fw-bold">{{$article->subtitle}}</h6>
+
 <a  class="btn btn-primary" href="{{route('article',$article->slug)}}  ">lire la suite <i class="fas fa-arrow-right"></i></a>
-    </div>
+
+  <div   class="d-flex  my-1   " >
+        <span class="badge bg-info"> {{ $article->category->label}} </span>
+ </div>
+</div>
+
   </div>
 
 @endforeach

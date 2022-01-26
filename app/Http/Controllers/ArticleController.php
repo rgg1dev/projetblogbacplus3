@@ -4,10 +4,22 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use Illuminate\Http\Request;
+use App\Manager\ArticleManager;
 use App\Http\Requests\ArticleRequest;
+
+
+
+
 
 class ArticleController extends Controller
 {
+private $articleManager;
+    public function __construct(ArticleManager $articleManager)
+    {
+        $this->articleManager = $articleManager;
+
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -37,18 +49,13 @@ class ArticleController extends Controller
      * @param  App\Http\Request\ArticleRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ArticleRequest $request)
+public function store(ArticleRequest $request)
     {
 
         $validated = $request->validated();
 
-        Article::create([
+        $this->articleManager->build(new Article(), $request);
 
-            'title' => $request->input('title'),
-            'subtitle' => $request->input('subtitle'),
-            'content' => $request->input('content'),
-
-        ]);
 return redirect()->route('articles.index') ->with('seccess','article cree');
 
 
@@ -78,10 +85,8 @@ return redirect()->route('articles.index') ->with('seccess','article cree');
      */
     public function update( ArticleRequest $request, Article $article)
     {
-       $article->title= $request->input('title');
-       $article->subtitle= $request->input('subtitle');
-       $article->content= $request->input('content');
-       $article->save();
+
+      $this->articleManager->build($article,$request);
 
        return redirect()->route('articles.index') ->with('seccess','article modifier');
     }
@@ -92,7 +97,7 @@ return redirect()->route('articles.index') ->with('seccess','article cree');
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function delete (Article $article){
+    public function destroy (Article $article){
 
         $article->delete();
         return redirect()->route('articles.index') ->with('seccess','article suprimer');
