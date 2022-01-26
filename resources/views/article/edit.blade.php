@@ -49,6 +49,16 @@
 
 
            @enderror
+           <div class="col-12">
+            <div class=" form-group">
+<label for="category">categori</label>
+<select name="category" class=" form-control">
+    @foreach ($categories as $category )
+    <option value=" {{$category->id}} "> {{$category->label}} </option>
+
+    @endforeach
+</select>
+            </div>
                 <div class="col-12">
                             <div class="form-group">
                                     <label class="mx-1 h2 " for="">Corp de l'article</label>

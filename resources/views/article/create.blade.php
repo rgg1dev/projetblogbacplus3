@@ -4,7 +4,9 @@
 <div class="container">
     <h1 class="text-center my-3"> cree un article </h1>
     <form method="POST" action=" {{route('articles.store')}} ">
-       @csrf
+
+
+        @csrf
        <div class="col-12">
             <div class="form-group">
             <label class="mx-2 h2  " for="">Titre</label>
@@ -48,6 +50,18 @@
 
 
            @enderror
+           <div class="col-12">
+            <div class=" form-group">
+<label for="category">categori</label>
+<select name="category" class=" form-control">
+    @foreach ($categories as $category )
+    <option value=" {{$category->id}}" {{$category->id === $article->category->id ? 'selected':'' }} > {{$category->label}} </option>
+
+    @endforeach
+</select>
+            </div>
+
+           </div>
                 <div class="col-12">
                             <div class="form-group">
                                     <label class="mx-2 h2  " for="">Corp de l'article</label>
@@ -64,9 +78,8 @@
                         @enderror
                             </div>
          <script>
-        tinymce.init({
-        selector: '#tinycme-edidor'
-                        });
+        tinymce.init
+        ({ selector: '#tinycme-edidor'});
         </script>
 
    <div class="d-flex justify-content-center  my-2">

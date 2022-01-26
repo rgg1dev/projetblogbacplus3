@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Manager\ArticleManager;
 use App\Http\Requests\ArticleRequest;
@@ -40,7 +41,9 @@ private $articleManager;
      */
     public function create()
     {
-        return view('article.create');
+        return view('article.create',
+        ['categories'=>Category::all()
+    ]);
     }
 
     /**
@@ -72,7 +75,8 @@ return redirect()->route('articles.index') ->with('seccess','article cree');
     public function edit(Article $article)
     {
        return view('article.edit',[
-           'article' => $article
+           'article' => $article,
+           'categories'=>Category::all()
        ]);
     }
 
