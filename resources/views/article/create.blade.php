@@ -52,10 +52,10 @@
            @enderror
            <div class="col-12">
             <div class=" form-group">
-<label for="category">categori</label>
+<label for="category">categorie</label>
 <select name="category" class=" form-control">
     @foreach ($categories as $category )
-    <option value=" {{$category->id}}" {{$category->id === $article->category->id ? 'selected':'' }} > {{$category->label}} </option>
+    <option value=" {{$category->id}}">{{$category->label}} </option>
 
     @endforeach
 </select>

@@ -1,4 +1,4 @@
-
+{{-- menu principal ************************************************************************* --}}
 @extends('base')
 @section('content')
 
@@ -32,8 +32,7 @@
           </div>
         </div>
       </div>
-
-
     </div>
   </main>
 @endsection
+

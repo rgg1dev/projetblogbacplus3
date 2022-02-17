@@ -1,5 +1,6 @@
 <?php
 
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
@@ -35,10 +36,15 @@ Route::get('/articles/{article:slug}',[MainController::class,'show'])->name('art
 
 Auth::routes();
 
-Route::prefix('admin')->middleware('admin')->group(function(){
-    Route::resource('articles',ArticleController::class)->except([
-        'show'
-    ]);
+// Route::prefix('admin')->middleware('admin')->group(function(){
+ //    Route::resource('articles',ArticleController::class)->except([
+      //   'show'
+  //  ]);
+//});
+
+
+
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
 });
-
-
