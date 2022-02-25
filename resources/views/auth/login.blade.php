@@ -44,9 +44,12 @@
                         <div class="row mb-0">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                  connexion
+                                  Connexion
                                 </button>
 
+                                <a class="btn btn-dark" href="{{ route('github.auth') }}">
+                                Conexion Github
+                                </a>
 
                                     <a class="btn btn-link" href="{{ route('register') }}">
                                         s'incrire
