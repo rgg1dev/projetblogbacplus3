@@ -2,15 +2,25 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class RouteTest extends TestCase
 {
-  public function testaccessAdminWithAmintRole()
+  public function testaccessAdminWithGestRole()
   {
- $response = $this->get ;('/admin/articles' );
- $response -> assertRedirect('/');
+ $response = $this->get ('/admin/articles' );
+ $response -> assertRedirect('/admin/login');
+  }
+
+  public function testaccessAdminWithAdminRole()
+  {
+      $admin=Auth::loginUsingId(1);
+    $this->actingAs($admin);
+
+ $response = $this->get('/admin/articles');
+ $response->assertStatus(200);
   }
 }
